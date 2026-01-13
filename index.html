@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* Общие стили */
         * {
             margin: 0;
             padding: 0;
@@ -28,7 +27,6 @@
             padding: 0 20px;
         }
 
-        /* Шапка */
         header {
             background-color: #0a2463;
             color: white;
@@ -53,14 +51,20 @@
             opacity: 0.9;
         }
 
-        /* Секции с товарами */
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3e92cc;
+        }
+
         .section-title {
             font-family: 'Rubik', sans-serif;
             color: #0a2463;
             font-size: 2rem;
-            margin: 40px 0 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #3e92cc;
+            margin: 0;
         }
 
         .products-grid {
@@ -70,7 +74,6 @@
             margin-bottom: 50px;
         }
 
-        /* Карточка товара */
         .product-card {
             background-color: white;
             border-radius: 12px;
@@ -133,7 +136,6 @@
             background-color: #3e92cc;
         }
 
-        /* Режим редактирования */
         .edit-mode .product-title,
         .edit-mode .product-description {
             border: 1px dashed #3e92cc;
@@ -190,7 +192,39 @@
             background-color: #0a2463;
         }
 
-        /* Панель администратора */
+        .section-edit-fields {
+            margin: 15px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .section-edit-fields input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .save-section-btn {
+            background-color: #3e92cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .save-section-btn:hover {
+            background-color: #0a2463;
+        }
+
         .admin-panel {
             background-color: #f8f9fa;
             padding: 25px;
@@ -252,10 +286,9 @@
         }
 
         .hidden {
-            display: none;
+            display: none !important;
         }
 
-        /* Подвал */
         footer {
             background-color: #0a2463;
             color: white;
@@ -275,37 +308,13 @@
             font-size: 0.9rem;
         }
 
-        /* Адаптивность */
-        @media (max-width: 768px) {
-            .products-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            h2 {
-                font-size: 1.2rem;
-            }
-            
-            .section-title {
-                font-size: 1.7rem;
-            }
-            
-            .admin-controls {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .admin-controls input,
-            .admin-controls button {
-                width: 100%;
-            }
+        .current-date {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
+            font-style: italic;
         }
 
-        /* Вспомогательные стили */
         .status-message {
             padding: 10px;
             margin: 10px 0;
@@ -326,11 +335,38 @@
             border: 1px solid #f5c6cb;
         }
 
-        .current-date {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-top: 5px;
-            font-style: italic;
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .admin-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .admin-controls input,
+            .admin-controls button {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -342,10 +378,10 @@
        - Прокрути страницу вниз до блока "Режим редактора".
        - Введи пароль: korablik2026
        - Нажми "Войти".
-    3. Теперь на каждой карточки товара появятся поля для редактирования.
-       - Чтобы ЗАГРУЗИТЬ СВОИ КАРТИНКИ: залей свои фото на любой бесплатный облачный диск (Яндекс.Диск, Облако Mail.ru, Google Диск), настрой "доступ по ссылке" и скопируй эту ссылку. Вставь ее в поле "Ссылка на изображение" и нажми "Сохранить".
-       - Чтобы изменить текст: отредактируй поля "Название" и "Описание", нажми "Сохранить".
-    4. Все изменения автоматически сохранятся в памяти ТВОЕГО браузера. Чтобы сбросить всё, нажми "Выйти" и очисти кэш браузера.
+    3. Теперь вы можете редактировать:
+       - Названия категорий (Футболки, Кепки, Носки)
+       - Картинки, названия и описания товаров
+    4. Все изменения сохранятся автоматически.
     -->
 
     <header>
@@ -358,18 +394,26 @@
 
     <main class="container">
         <!-- Секция Футболки -->
-        <section id="t-shirts">
-            <h2 class="section-title">Футболки</h2>
+        <section id="t-shirts-section">
+            <div class="section-header">
+                <h2 class="section-title" id="t-shirts-title">Футболки</h2>
+            </div>
+            
+            <!-- Поле для редактирования названия категории (скрыто по умолчанию) -->
+            <div class="section-edit-fields hidden" data-section="t-shirts">
+                <input type="text" id="edit-t-shirts-title" placeholder="Введите новое название категории">
+                <button class="save-section-btn" onclick="saveSectionTitle('t-shirts')">Сохранить название категории</button>
+            </div>
+            
             <div class="products-grid" id="t-shirts-grid">
                 <!-- Карточка товара 1 -->
                 <div class="product-card" data-id="product_1">
-                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?fit=crop&w=500" alt="Футболка" class="product-image">
+                    <img src="https://storage.vsemayki.ru/images/0/2/2922/2922259/previews/people_1_child_tshirt_back_white_500.jpg" alt="Футболка" class="product-image">
                     <div class="product-content">
                         <h3 class="product-title">Футболка "Парусник"</h3>
                         <p class="product-description">Эта футболка сделана из 100% хлопка, на ней изображен стилизованный парусник, рассекающий волны. Идеальна для летних путешествий.</p>
                         <button class="order-btn" onclick="alert('Для заказа пишите в Telegram: @korablik_merch')">Узнать цену / Заказать</button>
                     </div>
-                    <!-- Поля редактирования (скрыты по умолчанию) -->
                     <div class="edit-fields hidden">
                         <div class="edit-field">
                             <label for="edit-image-1">Ссылка на изображение:</label>
@@ -389,7 +433,7 @@
                 
                 <!-- Карточка товара 2 -->
                 <div class="product-card" data-id="product_2">
-                    <img src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?fit=crop&w=500" alt="Футболка" class="product-image">
+                    <img src="https://sneakers-museum.ru/wp-content/uploads/2018/10/Futbolka-0001.jpg" alt="Футболка" class="product-image">
                     <div class="product-content">
                         <h3 class="product-title">Футболка "Якорь"</h3>
                         <p class="product-description">Эта футболка с принтом якоря символизирует стабильность и надежность. Изготовлена из мягкого хлопка, не выцветает после стирок.</p>
@@ -414,7 +458,7 @@
                 
                 <!-- Карточка товара 3 -->
                 <div class="product-card" data-id="product_3">
-                    <img src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?fit=crop&w=500" alt="Футболка" class="product-image">
+                    <img src="https://basket-14.wbbasket.ru/vol2146/part214632/214632033/images/big/1.webp" alt="Футболка" class="product-image">
                     <div class="product-content">
                         <h3 class="product-title">Футболка "Компас"</h3>
                         <p class="product-description">Футболка с изображением компаса для тех, кто всегда находит верный путь. Удобный крой, качественная печать, подходит для повседневной носки.</p>
@@ -440,12 +484,21 @@
         </section>
 
         <!-- Секция Кепки -->
-        <section id="caps">
-            <h2 class="section-title">Кепки</h2>
+        <section id="caps-section">
+            <div class="section-header">
+                <h2 class="section-title" id="caps-title">Кепки</h2>
+            </div>
+            
+            <!-- Поле для редактирования названия категории (скрыто по умолчанию) -->
+            <div class="section-edit-fields hidden" data-section="caps">
+                <input type="text" id="edit-caps-title" placeholder="Введите новое название категории">
+                <button class="save-section-btn" onclick="saveSectionTitle('caps')">Сохранить название категории</button>
+            </div>
+            
             <div class="products-grid" id="caps-grid">
                 <!-- Карточка товара 4 -->
                 <div class="product-card" data-id="product_4">
-                    <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?fit=crop&w=500" alt="Кепка" class="product-image">
+                    <img src="https://yandex-images.clstorage.net/vgf53z139/66c5a9La62/Bai7PHdz39lMsz2GHPHypYEJlCqHrofrstqeEyshq3riysAlFJSvqTG8avKMqL3ODRv7jZpq0ypGbRjs0mDi5EWt93AxM8WCHvMk0hTy96ecVNc7m_SDtqiYwkpsLfUh5MGsTDPi2pVIiBWF8973lwdO_c2AfcRMLS5M85BkypAHkLc8SFOy2HqRQrY0zPiysHaVDpfWiKOw8cxQSGDwTrqYo2QH9_SzYrQErcD7wZA4cvr99m3ZdB1EY8OFdeyHC7mOJXJwutlPuVecBOv1hIBSiQqK5KCduv35ZHpf43GzhLpZO-rbmmG7MZHXxsuVIUDt-eZI1nABXEL6s2HruCeGqBdzRZnmUa9yqT7v0pmfdZ8ih8eMp5PZzUh3bNddrZmdSxvgzKxMvDOI0vn-pBpN__zobNtZOndg65BLxIMDvawlQGal7maCYrsN3fylqmmrC6TbhLO1yupseVz_TJ2csGcD1fysbLUXu87d-bIlTczF53vddTdhRNuNes2nPbuqDnx5vOJLjHyXJPzHtKtGsTWW5aCzuPrJSnNd80mYq5hqNsTBrnGYG5vx2MexJU7b-9x-_XYiSUPfjU_EoQqHnhJATKDdY5l2iTTK7I-Ba6M9h_GboZj_zGFTZddFv6WGagLz4qlGqymR3f77kxl63_z-QMBHEWRu2pFv0JI3kKUfc3OIzmypQp0n2e-ZsXKANYHZg7mZ7_RibUffRKGgi0EH0vu9X5U2jt_F-LU6ftff30LoeD1ef9-gaMiSK4aZLkFRmPd6uX6bFfzcuIpJuTaC0YSnqPDEbVRl2UyAqJ1HHsLcpVe1DLLN99ifAV7h4t5DwEUIfVrTg23HtRKqpxJ0brzjQoRVuiz5wLmRb5g7seSovJ355lR5ePZRlKajQgfMy71jjiWTyfbaoShQ7NzEZd58IF59yrRP9bQbsaweT1KG1m-lWp4F88eWqmmVOqvRm62P7dJiblc" alt="Кепка" class="product-image">
                     <div class="product-content">
                         <h3 class="product-title">Кепка "Штурвал"</h3>
                         <p class="product-description">Эта кепка сочетает стильный дизайн и удобство. С изображением штурвала, она защитит от солнца и добавит морского настроения вашему образу.</p>
@@ -470,7 +523,7 @@
                 
                 <!-- Карточка товара 5 -->
                 <div class="product-card" data-id="product_5">
-                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?fit=crop&w=500" alt="Кепка" class="product-image">
+                    <img src="https://a.allegroimg.com/original/11e873/f3ea48784e83b67fb70ceb0bd64b" alt="Кепка" class="product-image">
                     <div class="product-content">
                         <h3 class="product-title">Кепка "Ветер"</h3>
                         <p class="product-description">Легкая кепка с морской символикой, идеальна для яхтсменов и любителей морских прогулок. Регулируемый размер, качественные материалы.</p>
@@ -495,7 +548,7 @@
                 
                 <!-- Карточка товара 6 -->
                 <div class="product-card" data-id="product_6">
-                    <img src="https://images.unsplash.com/photo-1533050487297-09b450131914?fit=crop&w=500" alt="Кепка" class="product-image">
+                    <img src="https://avatars.mds.yandex.net/i?id=147e7990be697184c2f01ae4c9196f5dedeeead8-8567399-images-thumbs&n=13" alt="Кепка" class="product-image">
                     <div class="product-content">
                         <h3 class="product-title">Кепка "Маяк"</h3>
                         <p class="product-description">Стильная кепка с вышивкой в виде маяка. Надежная защита от солнца, дышащий материал, подчеркнет ваш морской стиль в любом путешествии.</p>
@@ -521,12 +574,21 @@
         </section>
 
         <!-- Секция Носки -->
-        <section id="socks">
-            <h2 class="section-title">Носки</h2>
+        <section id="socks-section">
+            <div class="section-header">
+                <h2 class="section-title" id="socks-title">Носки</h2>
+            </div>
+            
+            <!-- Поле для редактирования названия категории (скрыто по умолчанию) -->
+            <div class="section-edit-fields hidden" data-section="socks">
+                <input type="text" id="edit-socks-title" placeholder="Введите новое название категории">
+                <button class="save-section-btn" onclick="saveSectionTitle('socks')">Сохранить название категории</button>
+            </div>
+            
             <div class="products-grid" id="socks-grid">
                 <!-- Карточка товара 7 -->
                 <div class="product-card" data-id="product_7">
-                    <img src="https://images.unsplash.com/photo-1586350977771-b3d0b73d085c?fit=crop&w=500" alt="Носки" class="product-image">
+                    <img src="https://avatars.mds.yandex.net/get-mpic/3922047/2a0000018af6049bfb2bf1b5a213006e9a1a/orig" alt="Носки" class="product-image">
                     <div class="product-content">
                         <h3 class="product-title">Носки "Волна"</h3>
                         <p class="product-description">Эти носки с волнообразным узором сделаны из мягкого хлопка с добавлением эластана. Яркий дизайн, комфорт в носке, подходят для повседневной носки.</p>
@@ -551,7 +613,7 @@
                 
                 <!-- Карточка товара 8 -->
                 <div class="product-card" data-id="product_8">
-                    <img src="https://images.unsplash.com/photo-1544441893-675973e31985?fit=crop&w=500" alt="Носки" class="product-image">
+                    <img src="https://cdn.100sp.ru/pictures/1774694866" alt="Носки" class="product-image">
                     <div class="product-content">
                         <h3 class="product-title">Носки "Морской узор"</h3>
                         <p class="product-description">Носки с традиционным морским узором. Изготовлены из высококачественного хлопка, отлично сидят на ноге, дарят комфорт в течение всего дня.</p>
@@ -576,7 +638,7 @@
                 
                 <!-- Карточка товара 9 -->
                 <div class="product-card" data-id="product_9">
-                    <img src="https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?fit=crop&w=500" alt="Носки" class="product-image">
+                    <img src="https://yandex-images.clstorage.net/vgf53z139/66c5a9avWj/A7r1ciphh9VcoWGMU_Lys9demyGX5Jb6tdvXCHtz7zG4gppwXZKp-DPqbPKPv7yXWRqohZ4-iXVGPxmw0mDi5EWt93AxM8WCHvMk0hTy96ecVNc7m_SDtqiYwkpsLfUh5MGsTDPi2pVIiBWF8973lwdO_c2AfcRMLS5M85BkypAHkLc8SFOy2HqRQrY0zPiysHaVDpfWiKOw8cxQSGDwTrqYo2QH9_SzYrQErcD7wZA4cvr99m3ZdB1EY8OFdeyHC7mOJXJwutlPuVecBOv1hIBSiQqK5KCduv35ZHpf43GzhLpZO-rbmmG7MZHXxsuVIUDt-eZI1nABXEL6s2HruCeGqBdzRZnmUa9yqT7v0pmfdZ8ih8eMp5PZzUh3bNddrZmdSxvgzKxMvDOI0vn-pBpN__zobNtZOndg65BLxIMDvawlQGal7maCYrsN3fylqmmrC6TbhLO1yupseVz_TJ2csGcD1fysbLUXu87d-bIlTczF53vddTdhRNuNes2nPbuqDnx5vOJLjHyXJPzHtKtGsTWW5aCzuPrJSnNd80mYq5hqNsTBrnGYG5vx2MexJU7b-9x-_XYiSUPfjU_EoQqHnhJATKDdY5l2iTTK7I-Ba6M9h_GboZj_zGFTZddFv6WGagLz4qlGqymR3f77kxl63_z-QMBHEWRu2pFv0JI3kKUfc3OIzmypQp0n2e-ZsXKANYHZg7mZ7_RibUffRKGgi0EH0vu9X5U2jt_F-LU6ftff30LoeD1ef9-gaMiSK4aZLkFRmPd6uX6bFfzcuIpJuTaC0YSnqPDEbVRl2UyAqJ1HHsLcpVe1DLLN99ifAV7h4t5DwEUIfVrTg23HtRKqpxJ0brzjQoRVuiz5wLmRb5g7seSovJ355lR5ePZRlKajQgfMy71jjiWTyfbaoShQ7NzEZd58IF59yrRP9bQbsaweT1KG1m-lWp4F88eWqmmVOqvRm62P7dJiblc" alt="Носки" class="product-image">
                     <div class="product-content">
                         <h3 class="product-title">Носки "Кораблик"</h3>
                         <p class="product-description">Яркие носки с изображением маленького кораблика. Хлопок с добавлением полиэстера для долговечности, эластичная резинка, не сползают.</p>
@@ -624,50 +686,57 @@
         // Данные по умолчанию для всех товаров
         const defaultProducts = {
             product_1: {
-                image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?fit=crop&w=500",
+                image: "https://storage.vsemayki.ru/images/0/2/2922/2922259/previews/people_1_child_tshirt_back_white_500.jpg",
                 title: "Футболка \"Парусник\"",
                 description: "Эта футболка сделана из 100% хлопка, на ней изображен стилизованный парусник, рассекающий волны. Идеальна для летних путешествий."
             },
             product_2: {
-                image: "https://images.unsplash.com/photo-1581655353564-df123a1eb820?fit=crop&w=500",
+                image: "https://sneakers-museum.ru/wp-content/uploads/2018/10/Futbolka-0001.jpg",
                 title: "Футболка \"Якорь\"",
                 description: "Эта футболка с принтом якоря символизирует стабильность и надежность. Изготовлена из мягкого хлопка, не выцветает после стирок."
             },
             product_3: {
-                image: "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?fit=crop&w=500",
+                image: "https://basket-14.wbbasket.ru/vol2146/part214632/214632033/images/big/1.webp",
                 title: "Футболка \"Компас\"",
                 description: "Футболка с изображением компаса для тех, кто всегда находит верный путь. Удобный крой, качественная печать, подходит для повседневной носки."
             },
             product_4: {
-                image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?fit=crop&w=500",
+                image: "https://yandex-images.clstorage.net/vgf53z139/66c5a9La62/Bai7PHdz39lMsz2GHPHypYEJlCqHrofrstqeEyshq3riysAlFJSvqTG8avKMqL3ODRv7jZpq0ypGbRjs0mDi5EWt93AxM8WCHvMk0hTy96ecVNc7m_SDtqiYwkpsLfUh5MGsTDPi2pVIiBWF8973lwdO_c2AfcRMLS5M85BkypAHkLc8SFOy2HqRQrY0zPiysHaVDpfWiKOw8cxQSGDwTrqYo2QH9_SzYrQErcD7wZA4cvr99m3ZdB1EY8OFdeyHC7mOJXJwutlPuVecBOv1hIBSiQqK5KCduv35ZHpf43GzhLpZO-rbmmG7MZHXxsuVIUDt-eZI1nABXEL6s2HruCeGqBdzRZnmUa9yqT7v0pmfdZ8ih8eMp5PZzUh3bNddrZmdSxvgzKxMvDOI0vn-pBpN__zobNtZOndg65BLxIMDvawlQGal7maCYrsN3fylqmmrC6TbhLO1yupseVz_TJ2csGcD1fysbLUXu87d-bIlTczF53vddTdhRNuNes2nPbuqDnx5vOJLjHyXJPzHtKtGsTWW5aCzuPrJSnNd80mYq5hqNsTBrnGYG5vx2MexJU7b-9x-_XYiSUPfjU_EoQqHnhJATKDdY5l2iTTK7I-Ba6M9h_GboZj_zGFTZddFv6WGagLz4qlGqymR3f77kxl63_z-QMBHEWRu2pFv0JI3kKUfc3OIzmypQp0n2e-ZsXKANYHZg7mZ7_RibUffRKGgi0EH0vu9X5U2jt_F-LU6ftff30LoeD1ef9-gaMiSK4aZLkFRmPd6uX6bFfzcuIpJuTaC0YSnqPDEbVRl2UyAqJ1HHsLcpVe1DLLN99ifAV7h4t5DwEUIfVrTg23HtRKqpxJ0brzjQoRVuiz5wLmRb5g7seSovJ355lR5ePZRlKajQgfMy71jjiWTyfbaoShQ7NzEZd58IF59yrRP9bQbsaweT1KG1m-lWp4F88eWqmmVOqvRm62P7dJiblc",
                 title: "Кепка \"Штурвал\"",
                 description: "Эта кепка сочетает стильный дизайн и удобство. С изображением штурвала, она защитит от солнца и добавит морского настроения вашему образу."
             },
             product_5: {
-                image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?fit=crop&w=500",
+                image: "https://a.allegroimg.com/original/11e873/f3ea48784e83b67fb70ceb0bd64b",
                 title: "Кепка \"Ветер\"",
                 description: "Легкая кепка с морской символикой, идеальна для яхтсменов и любителей морских прогулок. Регулируемый размер, качественные материалы."
             },
             product_6: {
-                image: "https://images.unsplash.com/photo-1533050487297-09b450131914?fit=crop&w=500",
+                image: "https://avatars.mds.yandex.net/i?id=147e7990be697184c2f01ae4c9196f5dedeeead8-8567399-images-thumbs&n=13",
                 title: "Кепка \"Маяк\"",
                 description: "Стильная кепка с вышивкой в виде маяка. Надежная защита от солнца, дышащий материал, подчеркнет ваш морской стиль в любом путешествии."
             },
             product_7: {
-                image: "https://images.unsplash.com/photo-1586350977771-b3d0b73d085c?fit=crop&w=500",
+                image: "https://avatars.mds.yandex.net/get-mpic/3922047/2a0000018af6049bfb2bf1b5a213006e9a1a/orig",
                 title: "Носки \"Волна\"",
                 description: "Эти носки с волнообразным узором сделаны из мягкого хлопка с добавлением эластана. Яркий дизайн, комфорт в носке, подходят для повседневной носки."
             },
             product_8: {
-                image: "https://images.unsplash.com/photo-1544441893-675973e31985?fit=crop&w=500",
+                image: "https://cdn.100sp.ru/pictures/1774694866",
                 title: "Носки \"Морской узор\"",
                 description: "Носки с традиционным морским узором. Изготовлены из высококачественного хлопка, отлично сидят на ноге, дарят комфорт в течение всего дня."
             },
             product_9: {
-                image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?fit=crop&w=500",
+                image: "https://yandex-images.clstorage.net/vgf53z139/66c5a9avWj/A7r1ciphh9VcoWGMU_Lys9demyGX5Jb6tdvXCHtz7zG4gppwXZKp-DPqbPKPv7yXWRqohZ4-iXVGPxmw0mDi5EWt93AxM8WCHvMk0hTy96ecVNc7m_SDtqiYwkpsLfUh5MGsTDPi2pVIiBWF8973lwdO_c2AfcRMLS5M85BkypAHkLc8SFOy2HqRQrY0zPiysHaVDpfWiKOw8cxQSGDwTrqYo2QH9_SzYrQErcD7wZA4cvr99m3ZdB1EY8OFdeyHC7mOJXJwutlPuVecBOv1hIBSiQqK5KCduv35ZHpf43GzhLpZO-rbmmG7MZHXxsuVIUDt-eZI1nABXEL6s2HruCeGqBdzRZnmUa9yqT7v0pmfdZ8ih8eMp5PZzUh3bNddrZmdSxvgzKxMvDOI0vn-pBpN__zobNtZOndg65BLxIMDvawlQGal7maCYrsN3fylqmmrC6TbhLO1yupseVz_TJ2csGcD1fysbLUXu87d-bIlTczF53vddTdhRNuNes2nPbuqDnx5vOJLjHyXJPzHtKtGsTWW5aCzuPrJSnNd80mYq5hqNsTBrnGYG5vx2MexJU7b-9x-_XYiSUPfjU_EoQqHnhJATKDdY5l2iTTK7I-Ba6M9h_GboZj_zGFTZddFv6WGagLz4qlGqymR3f77kxl63_z-QMBHEWRu2pFv0JI3kKUfc3OIzmypQp0n2e-ZsXKANYHZg7mZ7_RibUffRKGgi0EH0vu9X5U2jt_F-LU6ftff30LoeD1ef9-gaMiSK4aZLkFRmPd6uX6bFfzcuIpJuTaC0YSnqPDEbVRl2UyAqJ1HHsLcpVe1DLLN99ifAV7h4t5DwEUIfVrTg23HtRKqpxJ0brzjQoRVuiz5wLmRb5g7seSovJ355lR5ePZRlKajQgfMy71jjiWTyfbaoShQ7NzEZd58IF59yrRP9bQbsaweT1KG1m-lWp4F88eWqmmVOqvRm62P7dJiblc",
                 title: "Носки \"Кораблик\"",
                 description: "Яркие носки с изображением маленького кораблика. Хлопок с добавлением полиэстера для долговечности, эластичная резинка, не сползают."
             }
+        };
+
+        // Названия категорий по умолчанию
+        const defaultSectionTitles = {
+            't-shirts': 'Футболки',
+            'caps': 'Кепки',
+            'socks': 'Носки'
         };
 
         // Пароль для доступа к редактору
@@ -682,7 +751,6 @@
             messageDiv.textContent = text;
             messageDiv.className = `status-message ${type}`;
             
-            // Скрыть сообщение через 3 секунды
             setTimeout(() => {
                 messageDiv.textContent = '';
                 messageDiv.className = 'status-message';
@@ -700,7 +768,7 @@
                 document.getElementById('login-btn').classList.add('hidden');
                 document.getElementById('logout-btn').classList.remove('hidden');
                 
-                // Активируем режим редактирования для всех карточек
+                // Активируем режим редактирования
                 activateEditMode();
                 
                 showMessage('Режим редактирования активирован! Теперь вы можете изменять контент.', 'success');
@@ -744,6 +812,18 @@
                 if (titleInput) titleInput.value = productData.title;
                 if (descriptionInput) descriptionInput.value = productData.description;
             });
+            
+            // Показываем поля редактирования названий категорий
+            const sectionEditFields = document.querySelectorAll('.section-edit-fields');
+            sectionEditFields.forEach(field => {
+                field.classList.remove('hidden');
+                const section = field.getAttribute('data-section');
+                const titleElement = document.getElementById(`${section}-title`);
+                const inputField = field.querySelector('input[type="text"]');
+                if (inputField && titleElement) {
+                    inputField.value = titleElement.textContent;
+                }
+            });
         }
 
         // Деактивация режима редактирования
@@ -757,28 +837,41 @@
                 const editFields = card.querySelector('.edit-fields');
                 editFields.classList.add('hidden');
             });
+            
+            // Скрываем поля редактирования названий категорий
+            const sectionEditFields = document.querySelectorAll('.section-edit-fields');
+            sectionEditFields.forEach(field => {
+                field.classList.add('hidden');
+            });
         }
 
         // Получение данных товара (из localStorage или по умолчанию)
         function getProductData(productId) {
-            // Пытаемся получить сохраненные данные из localStorage
             const savedData = localStorage.getItem(productId);
             
             if (savedData) {
                 return JSON.parse(savedData);
             } else {
-                // Возвращаем данные по умолчанию
                 return defaultProducts[productId];
+            }
+        }
+
+        // Получение названия категории (из localStorage или по умолчанию)
+        function getSectionTitle(sectionId) {
+            const savedTitle = localStorage.getItem(`section_${sectionId}`);
+            
+            if (savedTitle) {
+                return savedTitle;
+            } else {
+                return defaultSectionTitles[sectionId];
             }
         }
 
         // Сохранение изменений товара
         function saveProduct(productId) {
-            // Находим карточку товара
             const productCard = document.querySelector(`.product-card[data-id="${productId}"]`);
             const editFields = productCard.querySelector('.edit-fields');
             
-            // Получаем данные из полей редактирования
             const imageInput = editFields.querySelector('input[type="text"]');
             const titleInput = editFields.querySelectorAll('input[type="text"]')[1];
             const descriptionInput = editFields.querySelector('textarea');
@@ -789,36 +882,53 @@
                 description: descriptionInput.value.trim()
             };
             
-            // Проверяем, что поля не пустые
             if (!newData.image || !newData.title || !newData.description) {
                 showMessage('Все поля должны быть заполнены!', 'error');
                 return;
             }
             
-            // Сохраняем в localStorage
             localStorage.setItem(productId, JSON.stringify(newData));
-            
-            // Обновляем отображение карточки
             updateProductDisplay(productId, newData);
             
             showMessage(`Изменения для товара "${newData.title}" сохранены!`, 'success');
+        }
+
+        // Сохранение названия категории
+        function saveSectionTitle(sectionId) {
+            const inputField = document.getElementById(`edit-${sectionId}-title`);
+            const newTitle = inputField.value.trim();
+            
+            if (!newTitle) {
+                showMessage('Название категории не может быть пустым!', 'error');
+                return;
+            }
+            
+            localStorage.setItem(`section_${sectionId}`, newTitle);
+            updateSectionTitle(sectionId, newTitle);
+            
+            showMessage(`Название категории изменено на "${newTitle}"!`, 'success');
         }
 
         // Обновление отображения карточки товара
         function updateProductDisplay(productId, productData) {
             const productCard = document.querySelector(`.product-card[data-id="${productId}"]`);
             
-            // Обновляем изображение
             const imageElement = productCard.querySelector('.product-image');
             imageElement.src = productData.image;
             
-            // Обновляем заголовок
             const titleElement = productCard.querySelector('.product-title');
             titleElement.textContent = productData.title;
             
-            // Обновляем описание
             const descriptionElement = productCard.querySelector('.product-description');
             descriptionElement.textContent = productData.description;
+        }
+
+        // Обновление названия категории
+        function updateSectionTitle(sectionId, title) {
+            const titleElement = document.getElementById(`${sectionId}-title`);
+            if (titleElement) {
+                titleElement.textContent = title;
+            }
         }
 
         // Загрузка сохраненных данных при запуске страницы
@@ -827,10 +937,15 @@
             for (let i = 1; i <= 9; i++) {
                 const productId = `product_${i}`;
                 const productData = getProductData(productId);
-                
-                // Обновляем отображение карточки
                 updateProductDisplay(productId, productData);
             }
+            
+            // Для каждой категории загружаем сохраненное название
+            const sections = ['t-shirts', 'caps', 'socks'];
+            sections.forEach(sectionId => {
+                const title = getSectionTitle(sectionId);
+                updateSectionTitle(sectionId, title);
+            });
         }
 
         // Проверка, авторизован ли пользователь (при перезагрузке страницы)
@@ -838,7 +953,6 @@
             const isAuthenticated = localStorage.getItem('merch_korablik_authenticated');
             
             if (isAuthenticated === 'true') {
-                // Автоматически входим в режим редактирования
                 editMode = true;
                 document.getElementById('login-btn').classList.add('hidden');
                 document.getElementById('logout-btn').classList.remove('hidden');
@@ -851,7 +965,6 @@
             loadSavedData();
             checkAuthStatus();
             
-            // Обработка нажатия Enter в поле пароля
             document.getElementById('password-input').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     login();
